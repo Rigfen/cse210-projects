@@ -6,46 +6,40 @@ class Program
     static void Main(string[] args)
     {
         List<int> numbers = new List<int>();
-        
-        
-        int userNumber = -1;
-        while (userNumber != 0)
+
+        Console.WriteLine("Enter numbers. Type 0 to finish.");
+
+        while (true)
         {
-            Console.Write("Enter a number (0 to quit): ");
-            
-            string userResponse = Console.ReadLine();
-            userNumber = int.Parse(userResponse);
-            
-            if (userNumber != 0)
+            Console.Write("Enter a number: ");
+
+            int number = int.Parse(Console.ReadLine());
+
+            if (number == 0)
             {
-                numbers.Add(userNumber);
+                break;
             }
+
+            numbers.Add(number);
         }
 
         int sum = 0;
+        int largest = numbers[0];
+
         foreach (int number in numbers)
         {
             sum += number;
-        }
 
-        Console.WriteLine($"The sum is: {sum}");
-
-        
-        float average = ((float)sum) / numbers.Count;
-        Console.WriteLine($"The average is: {average}");
-
-    
-        int max = numbers[0];
-
-        foreach (int number in numbers)
-        {
-            if (number > max)
+            if (number > largest)
             {
-        
-                max = number;
+                largest = number;
             }
         }
 
-        Console.WriteLine($"The max is: {max}");
+        double average = (double)sum / numbers.Count;
+
+        Console.WriteLine($"Sum: {sum}");
+        Console.WriteLine($"Average: {average}");
+        Console.WriteLine($"Largest Number: {largest}");
     }
 }
