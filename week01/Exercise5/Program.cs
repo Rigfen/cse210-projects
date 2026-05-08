@@ -2,30 +2,44 @@ using System;
 
 class Program
 {
-    static void DisplayMessage()
-
-    {
-        Console.WriteLine("Hello World!");
-    }
-
     static void Main(string[] args)
     {
-        DisplayMessage();
-        PromptUser();
-        int result = AddNumbers(5, 7);
-        Console.Write($"The sum of the numbers is: {result}");
+        ShowMessage();
+
+        string name = GetName();
+
+        int number = GetNumber();
+
+        int answer = number * number;
+
+        ShowResult(name, answer);
     }
 
-    static void PromptUser()
+    static void ShowMessage()
+    {
+        Console.WriteLine("Welcome!");
+    }
+
+    static string GetName()
     {
         Console.Write("What is your name? ");
-        string name= Console.ReadLine();
-        Console.WriteLine($"Hello {name}!");
+
+        string userName = Console.ReadLine();
+
+        return userName;
     }
 
-    static int AddNumbers (int num1, int num2)
+    static int GetNumber()
     {
-        int sum = num1 + num2;
-        return sum;
+        Console.Write("Enter a number: ");
+
+        int userNumber = int.Parse(Console.ReadLine());
+
+        return userNumber;
+    }
+
+    static void ShowResult(string name, int result)
+    {
+        Console.WriteLine($"{name}, your number squared is {result}");
     }
 }
