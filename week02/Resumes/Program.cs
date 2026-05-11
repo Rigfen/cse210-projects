@@ -19,9 +19,11 @@ class Program
         Resume resume = new Resume();
         resume._name = "Jared Larsen";
 
-        job1.Display();
-        job2.Display();
+        resume._jobs.Add(job1);
+        resume._jobs.Add(job2);
 
+        resume.Display();
+        
         Console.WriteLine("This is the Resumes Project.");
     }
 }
