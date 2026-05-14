@@ -28,7 +28,6 @@ class Journal
         }
     }
     public void LoadFromFile(string file)
-
     {
       string[] lines = System.IO.File.ReadAllLines(file);
           foreach (string line in lines)
