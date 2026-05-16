@@ -1,28 +1,66 @@
+// Added time tracking for entries
+// and improving journal formatting when displayed and saved.
+
 using System;
 
 class Program
 {
     static void Main(string[] args)
     {
-       PromptGenerator promptGenerator = new PromptGenerator();
-       string prompt = promptGenerator.GetRandomPrompt();
+        Journal journal = new Journal();
+        journal.LoadFromFile("journal.txt");
+        PromptGenerator promptGenerator = new PromptGenerator();
 
-       Console.WriteLine(prompt);
-       Console.Write("> ");
+        int choice = 0;
 
-string response = Console.ReadLine();
+        while (choice != 5)
+        {
+            Console.WriteLine("Journal Menu");
+            Console.WriteLine("1. Write");
+            Console.WriteLine("2. Display");
+            Console.WriteLine("3. Save");
+            Console.WriteLine("4. Load");
+            Console.WriteLine("5. Quit");
 
-Entry entry = new Entry();
-entry._date = DateTime.Now.ToShortDateString();
-entry._time = DateTime.Now.ToShortTimeString();
-entry._prompttext = prompt;
-entry._entrytext = response;
-Journal journal = new Journal();
-journal.ADDEntry(entry);
-journal.DisplayAll();
-journal.SaveToFile($"C:\\Users\\Rigfe\\OneDrive\\Desktop\\Pathway program\\CSE 210\\cse210-projects\\week02\\Journal\\journal.txt");
+            Console.Write("Choose an option: ");
 
+            choice = int.Parse(Console.ReadLine());
+
+            if (choice == 1)
+            {
+                string prompt = promptGenerator.GetRandomPrompt();
+
+                Console.WriteLine(prompt);
+                Console.Write("> ");
+
+                string response = Console.ReadLine();
+
+                Entry newEntry = new Entry();
+
+                newEntry._date = DateTime.Now.ToShortDateString();
+                newEntry._time = DateTime.Now.ToShortTimeString();
+                newEntry._promptText = prompt;
+                newEntry._entryText = response;
+
+                journal.AddEntry(newEntry);
+            }
+
+            else if (choice == 2)
+            {
+                journal.DisplayAll();
+            }
+
+            else if (choice == 3)
+            {
+                journal.SaveToFile("journal.txt");
+                Console.WriteLine("Journal saved.");
+            }
+
+            else if (choice == 4)
+            {
+                journal.LoadFromFile("journal.txt");
+                Console.WriteLine("Journal loaded.");
+}
+        }
     }
 }
-
-//I added the time to the entry and display. I also added a save to file and load from file function to the journal class. I also added a file name to the save to file function.
