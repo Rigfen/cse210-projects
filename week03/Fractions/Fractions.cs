@@ -24,14 +24,33 @@ public class Fraction
         this._bottom = bottom;
     }
 
+    public int GetTop()
+    {
+    return _top;
+    }
+
+    public int GetBottom()
+    {
+    return _bottom;
+    }
+
+    public void SetTop(int value)
+    {
+    _top = value;
+    }
+
+    public void SetBottom(int value)
+    {
+    _bottom = value;
+    }
+
     public string GetFractionString()
     {
         return $"{_top}/{_bottom}";
     }
 
-    public string GetDecimalValue()
+    public double GetDecimalValue()
     {
-        double decimalValue = (double)_top / _bottom;
-        return decimalValue.ToString();
+        return (double)_top / _bottom;
     }
 }
