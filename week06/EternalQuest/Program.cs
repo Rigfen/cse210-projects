@@ -1,3 +1,5 @@
+// Made it so that every time you add a goal, it will display a message confirming that the goal was added and show the name of the goal you just added.
+
 GoalManager manager = new GoalManager();
 
 bool running = true;
