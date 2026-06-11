@@ -12,10 +12,14 @@ public class GoalManager
         Console.WriteLine($"You have {_score} points.");
     }
 
-    public void AddGoal(Goal goal)
-    {
-        _goals.Add(goal);
-    }
+  public void AddGoal(Goal goal)
+{
+    _goals.Add(goal);
+
+    Console.WriteLine();
+    Console.WriteLine("Goal saved successfully!");
+    Console.WriteLine($"You added: {goal.GetName()}");
+}
 
     public void DisplayGoals()
     {
@@ -81,4 +85,5 @@ public class GoalManager
             }
         }
     }
+    
 }
